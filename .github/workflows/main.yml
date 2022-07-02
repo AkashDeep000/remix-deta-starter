@@ -18,7 +18,7 @@ jobs:
       - name: Build Remix App
         shell: bash
         run: |
-          npm run Build
+          npm run build
           
       - name: Install Deta CLI
         shell: bash

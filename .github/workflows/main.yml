@@ -29,15 +29,15 @@ jobs:
         shell: bash
         run: |
           export DETA_ACCESS_TOKEN=${{ env.deta-access-token }}
-          ~/.deta/bin/deta clone --name ${{ env.deta-name }} --project ${{ env.deta-project }} tmp/
           mkdir ./remix-deta-build
           cd remix-deta-build
-          cp -r tmp/.deta ./
-          cp -r ../build ./
-          cp -r ../public ./
-          cp -r ../detaAdapter ./
-          cp -r ../index.js ./
-          cp -r ../remix.config.js ./
+          ~/.deta/bin/deta clone --name ${{ env.deta-name }} --project ${{ env.deta-project }} tmp/
+          cp -r tmp/.deta .
+          cp -r ../build .
+          cp -r ../public .
+          cp -r ../detaAdapter .
+          cp -r ../index.js .
+          cp -r ../remix.config.js .
           ls
           npm init -y
           npm i express morgan compression

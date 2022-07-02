@@ -7,7 +7,7 @@ jobs:
       deta-access-token: ${{secrets.DETA_ACCESS_TOKEN}} #Deta access token https://docs.deta.sh/docs/cli/auth
       deta-name: 'remix-deta'
       deta-project: 'default'
-      deta-project-dir: '.'
+      #deta-project-dir: '.'
 
     steps:
       - uses: actions/checkout@v3
@@ -38,7 +38,6 @@ jobs:
           cp -r ../detaAdapter .
           cp -r ../index.js .
           cp -r ../remix.config.js .
-          ls
           npm init -y
           npm i express morgan compression
       - name: Deploy to Deta

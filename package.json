@@ -2,10 +2,13 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
-    "dev": "remix build && run-p dev:*",
-    "dev:node": "cross-env NODE_ENV=development nodemon ./server.js --watch ./server.js",
+    "build": "npm run generate:css && remix build",
+    "dev": "run-p dev:*",
+    "dev:node": "cross-env NODE_ENV=development nodemon ./index.js --watch ./index.js",
+    "dev:css": "npm run generate:css -- --watch",
+    "dev:build": "remix build",
     "dev:remix": "remix watch",
+    "generate:css": "tailwindcss -m -i app/styles/tailwind.css -o app/styles/tailwind-out.css",
     "start": "cross-env NODE_ENV=production node ./server.js"
   },
   "dependencies": {

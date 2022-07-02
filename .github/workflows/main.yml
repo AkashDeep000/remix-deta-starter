@@ -13,6 +13,11 @@ jobs:
           deta-project: 'default'
           deta-project-dir: '.'
       - run: npm install
+      - name: Build Remix App
+        shell: bash
+        run: |
+          npm run build
+          
       - name: Install Deta CLI
         shell: bash
         run: |
@@ -21,14 +26,14 @@ jobs:
       - name: Clone Deta Metadata
         shell: bash
         run: |
-          export DETA_ACCESS_TOKEN=${{ inputs.deta-access-token }}
-          cd ${{ inputs.deta-project-dir }}
-          ~/.deta/bin/deta clone --name ${{ inputs.deta-name }} --project ${{ inputs.deta-project }} tmp/
+          export DETA_ACCESS_TOKEN=${{ deta-access-token }}
+          cd ${{ deta-project-dir }}
+          ~/.deta/bin/deta clone --name ${{ deta-name }} --project ${{ deta-project }} tmp/
           cp -r tmp/.deta .
 
       - name: Deploy to Deta
         shell: bash
         run: |
-          export DETA_ACCESS_TOKEN=${{ inputs.deta-access-token }}
-          cd ${{ inputs.deta-project-dir }}
+          export DETA_ACCESS_TOKEN=${{ deta-access-token }}
+          cd ${{ deta-project-dir }}
           ~/.deta/bin/deta deploy

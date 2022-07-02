@@ -29,7 +29,6 @@ jobs:
         shell: bash
         run: |
           export DETA_ACCESS_TOKEN=${{ env.deta-access-token }}
-          cd ${{ env.deta-project-dir }}
           ~/.deta/bin/deta clone --name ${{ env.deta-name }} --project ${{ env.deta-project }} tmp/
           mkdir ./remix-deta-build
           cd remix-deta-build

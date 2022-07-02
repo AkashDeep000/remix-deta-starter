@@ -1,7 +1,7 @@
-name: learn-github-actions
+name: Deploy on Deta macro
 on: [push]
 jobs:
-  check-bats-version:
+  deploy-on-deta-macro:
     runs-on: ubuntu-latest
     env:
       deta-access-token: ${{secrets.DETA_ACCESS_TOKEN}} #Deta access token https://docs.deta.sh/docs/cli/auth

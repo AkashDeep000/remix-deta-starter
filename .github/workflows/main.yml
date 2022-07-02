@@ -1,13 +1,13 @@
-name: Deploy on Deta macro
+name: learn-github-actions
 on: [push]
 jobs:
-  deploy-on-deta-macro:
+  check-bats-version:
     runs-on: ubuntu-latest
     env:
       deta-access-token: ${{secrets.DETA_ACCESS_TOKEN}} #Deta access token https://docs.deta.sh/docs/cli/auth
       deta-name: 'remix-deta'
       deta-project: 'default'
-      #deta-project-dir: '.'
+      deta-project-dir: '.'
 
     steps:
       - uses: actions/checkout@v3
@@ -29,20 +29,12 @@ jobs:
         shell: bash
         run: |
           export DETA_ACCESS_TOKEN=${{ env.deta-access-token }}
-          mkdir ./remix-deta-build
-          cd remix-deta-build
+          cd ${{ env.deta-project-dir }}
           ~/.deta/bin/deta clone --name ${{ env.deta-name }} --project ${{ env.deta-project }} tmp/
           cp -r tmp/.deta .
-          cp -r ../build .
-          cp -r ../public .
-          cp -r ../detaAdapter .
-          cp -r ../index.js .
-          cp -r ../remix.config.js .
-          npm init -y
-          npm i express morgan compression
       - name: Deploy to Deta
         shell: bash
         run: |
           export DETA_ACCESS_TOKEN=${{ env.deta-access-token }}
-          cd ./remix-deta-build
+          cd ${{ env.deta-project-dir }}
           ~/.deta/bin/deta deploy

@@ -4,7 +4,7 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     env:
-      deta-access-token: 'ViJbaJGb_Rcth73b2H7M6fEjWuEbhseuCcGd8HAaa' #Deta access token https://docs.deta.sh/docs/cli/auth
+      deta-access-token: ${{secrets.DETA_ACCESS_TOKEN}} #Deta access token https://docs.deta.sh/docs/cli/auth
       deta-name: 'remix-deta'
       deta-project: 'default'
       deta-project-dir: '.'

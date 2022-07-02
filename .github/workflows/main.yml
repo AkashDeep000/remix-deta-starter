@@ -32,6 +32,3 @@ jobs:
           export DETA_ACCESS_TOKEN=${{ inputs.deta-access-token }}
           cd ${{ inputs.deta-project-dir }}
           ~/.deta/bin/deta deploy
-branding:
-  icon: check-circle
-  color: purple

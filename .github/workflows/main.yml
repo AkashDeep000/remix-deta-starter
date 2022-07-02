@@ -31,8 +31,16 @@ jobs:
           export DETA_ACCESS_TOKEN=${{ env.deta-access-token }}
           cd ${{ env.deta-project-dir }}
           ~/.deta/bin/deta clone --name ${{ env.deta-name }} --project ${{ env.deta-project }} tmp/
-          cp -r tmp/.deta .
-
+          mkdir ./remix-deta-build
+          cp -r tmp/.deta ./remix-deta-build
+          cp -r ./build ./remix-deta-build
+          cp -r ./public ./remix-deta-build
+          cp -r ./detaAdapter ./remix-deta-build
+          cp -r ./index.js ./remix-deta-build
+          cp -r ./remix.config.js ./remix-deta-build
+          ls
+          npm init
+          npm i express morgan compression
       - name: Deploy to Deta
         shell: bash
         run: |
